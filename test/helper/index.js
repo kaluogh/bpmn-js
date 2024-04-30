@@ -23,10 +23,8 @@
  *   insertCSS
  * } from 'bpmn-js/test/helper';
  *
- * var fs = require('fs');
- *
  * // insert diagram.css
- * insertCSS('diagram.css', fs.readFileSync('some-css.css', 'utf8'));
+ * insertCSS('diagram.css', require('./some-css.css'));
  * ```
  */
 
@@ -104,7 +102,7 @@ export function bootstrapBpmnJS(BpmnJS, diagram, options, locals) {
       var mockModule = {};
 
       forEach(_locals, function(v, k) {
-        mockModule[k] = ['value', v];
+        mockModule[k] = [ 'value', v ];
       });
 
       _options.modules = [].concat(_options.modules || [], [ mockModule ]);
